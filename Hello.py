@@ -11,8 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.document_loaders.pdf import PyPDFLoader
+from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain_community.document_loaders.pdf import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -32,7 +32,8 @@ import getpass
 
 LOGGER = get_logger(__name__)
 os.environ["COHERE_API_KEY"] = "7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw"
-DB_FAISS_PATH = "vectorstore/db_faiss"
+DB_FAISS_PATH = r"vectorstore/db_faiss"
+
 
 #Train with CSV files
 def train_model_With_CSV():
@@ -47,6 +48,21 @@ def train_model_With_CSV():
     docsearch  = FAISS.from_documents(text_chunks,embeddings)
     #save to vector Db
     docsearch.save_local(DB_FAISS_PATH)
+    #calling llm model
+    db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
+    llm = ChatCohere(model="command-r")
+    qa = ConversationalRetrievalChain.from_llm(llm,retriever=db.as_retriever())
+    while True:
+        chat_history=[]
+        query=input(f"Input prompt : ")
+        if query == 'exit':
+            print("Exiting")
+            sys.exit()
+        if query == '':
+            continue
+        print("processing")
+        result = qa({"question":query,"chat_history":chat_history})
+        print("Response:",result['answer'])
 
 
 # Streamed response emulator
@@ -93,5 +109,5 @@ def chat():
     #st.success('Training Successful!', icon="✅")
 
 if __name__ == "__main__":
-    chat()
-    #st.success('Training Successful!', icon="✅")
+    train_model_With_CSV()
+    
