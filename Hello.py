@@ -31,7 +31,7 @@ import sys
 import getpass
 
 LOGGER = get_logger(__name__)
-os.environ["COHERE_API_KEY"] = ""
+os.environ["COHERE_API_KEY"] = "7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw"
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
 #Train with CSV files
@@ -88,9 +88,9 @@ def chat():
     st.session_state.messages.append({"role": "assistant", "content": response})
 
 
-if st.button('Train'):
-    train_model_With_CSV()
+#if st.button('Train'):
+    #train_model_With_CSV()
     #st.success('Training Successful!', icon="✅")
 
-#if __name__ == "__main__":
-    #chat()
+if __name__ == "__main__":
+    train_model_With_CSV()
