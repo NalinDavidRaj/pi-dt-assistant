@@ -21,38 +21,15 @@ LOGGER = get_logger(__name__)
 
 def run():
     st.set_page_config(
-        page_title="Hello",
+        page_title="PIDT Assistant",
         page_icon="👋",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
-
-    #st.sidebar.success("Select a demo above.")
-    with st.chat_message("user"):
-      st.write("Hello 👋")
-    
-    prompt = st.chat_input("Say something")
-    if prompt:
-      st.write(f"User has sent the following prompt: {prompt}")
-
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
-
+with st.sidebar:
+    messages = st.container(height=300)
+    if prompt := st.chat_input("Say something"):
+        messages.chat_message("user").write(prompt)
+        messages.chat_message("assistant").write(f"Echo: {prompt}")
 
 if __name__ == "__main__":
     run()
