@@ -93,5 +93,5 @@ if st.button('Say hello'):
 else:
     st.write('Goodbye')
 
-if __name__ == "__main__":
-    chat()
+#if __name__ == "__main__":
+    #chat()
