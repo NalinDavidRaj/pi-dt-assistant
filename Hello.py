@@ -89,6 +89,7 @@ def chat():
 
 
 if st.button('Train'):
+    train_model_With_CSV()
     st.success('Training Successful!', icon="✅")
 
 #if __name__ == "__main__":
