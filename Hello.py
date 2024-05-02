@@ -32,14 +32,5 @@ def run():
       st.write("Hello 👋")
     
 
-    st.markdown(
-        """
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-       
-    """
-    )
-
-
 if __name__ == "__main__":
     run()
