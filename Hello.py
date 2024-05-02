@@ -43,7 +43,7 @@ if prompt := st.chat_input("What is up?"):
     qa = ConversationalRetrievalChain.from_llm(llm, retriever=db.as_retriever())
     query = prompt  # Use the user's input as the query
     chat_history = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
-    result = qa({"question": query, "chat_history": chat_history})
+    result = qa({"question": query})
     #response = result["answer"]
 
     # Print the response
