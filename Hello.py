@@ -22,12 +22,13 @@ LOGGER = get_logger(__name__)
 
 
 def run():
+    title = "PIDT Assistant"
     st.set_page_config(
-        page_title="PIDT Assistant",
+        page_title=title,
         page_icon="👋",
     )
     
-    st.title("Simple chat")
+    st.title(title)
     # Initialize chat history
     if "messages" not in st.session_state:
       st.session_state.messages = []
