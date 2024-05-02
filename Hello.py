@@ -32,8 +32,7 @@ import getpass
 
 LOGGER = get_logger(__name__)
 
-os.environ["COHERE_API_KEY"] = ""
-DB_FAISS_PATH = "vectorstore/db_faiss"
+
 
 # Streamed response emulator
 def response_generator():
