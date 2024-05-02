@@ -42,7 +42,7 @@ if prompt := st.chat_input("What is up?"):
     #chat_history = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
     chat_history=[]
     result = qa({"question":query,"chat_history":chat_history})
-    #response = result["answer"]
+    response = result["answer"]
 
     # Print the response
     #print("Response:", response)
