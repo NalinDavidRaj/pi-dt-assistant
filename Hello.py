@@ -31,19 +31,19 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+        st.markdown(message["question"])
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "question": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     # Adapted code for ConversationalRetrievalChain
     qa = ConversationalRetrievalChain.from_llm(llm, retriever=db.as_retriever())
     query = prompt  # Use the user's input as the query
-    chat_history = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
-    result = qa({"question": query})
+    chat_history = [m["question"] for m in st.session_state.messages if m["role"] == "user"]
+    result = qa({"question": query,"chat_history":chat_history})
     #response = result["answer"]
 
     # Print the response
