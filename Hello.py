@@ -43,5 +43,9 @@ if prompt := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = "test"
+        messages=[
+                {"role": m["role"], "content": m["content"]}
+                for m in st.session_state.messages
+            ],
+        response = messages[0]["content"]
     st.session_state.messages.append({"role": "assistant", "content": response})
