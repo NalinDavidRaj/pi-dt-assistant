@@ -73,8 +73,5 @@ def chat():
     st.session_state.messages.append({"role": "assistant", "content": response})
 
 
-if st.button('Train'):
-   st.write('Training Completed')
-
 if __name__ == "__main__":
     chat()
