@@ -31,11 +31,6 @@ def run():
     with st.chat_message("user"):
       st.write("Hello 👋")
     
-    with st.sidebar:
-      messages = st.container(height=300)
-      if prompt := st.chat_input("Ask something"):
-        messages.chat_message("user").write(prompt)
-        messages.chat_message("assistant").write(f"Echo: {prompt}")
 
     st.markdown(
         """
