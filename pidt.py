@@ -41,8 +41,11 @@ embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
  
 # convert the text chunks into embedding and save into FAISS knowledge base
 docsearch = FAISS.from_documents(text_chunks, embeddings)
- 
-docsearch.save_local(DB_FAISS_PATH)
+#read existing index
+db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
+docsearchNew = db.merge_from(docsearch)
+#Save to Local path
+docsearchNew.save_local(DB_FAISS_PATH)
  
 # calling llm model
 llm = ChatCohere(model="command-r")
