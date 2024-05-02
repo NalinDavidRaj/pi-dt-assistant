@@ -24,15 +24,6 @@ db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=
 llm = ChatCohere(model="command-r")
 qa = ConversationalRetrievalChain.from_llm(llm,retriever=db.as_retriever())
 
-# Set OpenAI API key from Streamlit secrets
-#client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-# Set a default model
-#if "coher_model" not in st.session_state:
-    #st.session_state["coher_model"] = "command-r"
-
-
-
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -52,10 +43,5 @@ if prompt := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-        result = qa({"question":messages,"chat_history":messages})
-        response = st.write_stream(result['answer'])
+        response = "test"
     st.session_state.messages.append({"role": "assistant", "content": response})
