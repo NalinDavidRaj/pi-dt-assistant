@@ -28,7 +28,8 @@ def run():
     st.write("# Welcome to Streamlit! 👋")
 
     st.sidebar.success("Select a demo above.")
-    st.chat_message("Ask anything about PI DT")
+    with st.chat_message("user"):
+      st.write("Hello 👋")
 
     st.markdown(
         """
