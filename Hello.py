@@ -94,7 +94,8 @@ if st.button('Train'):
 
 if st.button('Chat'):
     #train_model_With_CSV()
-    st.success('Chat Open!', icon="✅")
+    chat()
+    #st.success('Chat Open!', icon="✅")
 
 #if __name__ == "__main__":
     #chat()
