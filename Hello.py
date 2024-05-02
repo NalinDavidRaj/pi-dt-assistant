@@ -94,3 +94,4 @@ def chat():
 
 if __name__ == "__main__":
     train_model_With_CSV()
+    st.success('Training Successful!', icon="✅")
