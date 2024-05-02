@@ -19,7 +19,6 @@ import time
 
 LOGGER = get_logger(__name__)
 
-
 # Streamed response emulator
 def response_generator():
     response ="How can I assist you today?"
