@@ -34,6 +34,20 @@ LOGGER = get_logger(__name__)
 os.environ["COHERE_API_KEY"] = ""
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
+#Train with CSV files
+def train_model_With_CSV():
+    loader = CSVLoader(file_path="Data/sample.csv",encoding="utf8",csv_args={'delimiter':','})
+    data=loader.load()
+    #spilt the text into chunks
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500,chunk_overlap=20)
+    text_chunks = text_splitter.split_documents(data)
+    #Downlaod the model for embedding
+    embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
+    #convert the text chunks into embedding and save into FAISS knowledge base
+    docsearch  = FAISS.from_documents(text_chunks,embeddings)
+    #save to vector Db
+    docsearch.save_local(DB_FAISS_PATH)
+
 
 # Streamed response emulator
 def response_generator():
