@@ -88,8 +88,10 @@ def chat():
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
 
+    st.button('Check availability')
+
 if st.button('Check availability'):
    st.write('Why hello there')
-   
+
 if __name__ == "__main__":
     chat()
