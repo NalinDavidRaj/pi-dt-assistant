@@ -31,7 +31,7 @@ import sys
 import getpass
 
 LOGGER = get_logger(__name__)
-os.environ["COHERE_API_KEY"] = getpass.getpass()
+os.environ["COHERE_API_KEY"] = ""
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
 #Train with CSV files
