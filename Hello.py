@@ -17,6 +17,8 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
+def start():
+      st.chat_message("Ask anything about PI DT")
 
 def run():
     st.set_page_config(
@@ -48,4 +50,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    start()
