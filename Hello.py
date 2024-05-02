@@ -49,7 +49,7 @@ def train_model_With_CSV():
     #save to vector Db
     docsearch.save_local(DB_FAISS_PATH)
     #calling llm model
-    db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
+    """ db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
     llm = ChatCohere(model="command-r")
     qa = ConversationalRetrievalChain.from_llm(llm,retriever=db.as_retriever())
     while True:
@@ -62,7 +62,7 @@ def train_model_With_CSV():
             continue
         print("processing")
         result = qa({"question":query,"chat_history":chat_history})
-        print("Response:",result['answer'])
+        print("Response:",result['answer']) """
 
 
 # Streamed response emulator
