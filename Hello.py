@@ -14,6 +14,8 @@
 
 import streamlit as st
 from streamlit.logger import get_logger
+import random
+import time
 
 LOGGER = get_logger(__name__)
 
@@ -24,12 +26,6 @@ def run():
         page_title="PIDT Assistant",
         page_icon="👋",
     )
-
-    #st.write("# Welcome to Streamlit! 👋")
-
-    #st.sidebar.success("Select a demo above.")
-    with st.chat_message("user"):
-      st.write("Hello 👋")
     
 
 if __name__ == "__main__":
