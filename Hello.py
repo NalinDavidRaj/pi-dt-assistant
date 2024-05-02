@@ -18,7 +18,7 @@ COHERE_API_KEY =  "7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw"
 DB_FAISS_PATH = r"vectorstore/db_faiss"
 embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
 
-st.title("Stacy S Saranya AI")
+st.title("Performance Insights Assistant")
 
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
 llm = ChatCohere(model="command-r")
