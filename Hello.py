@@ -17,8 +17,7 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
-def start():
-      st.chat_message("Ask anything about PI DT")
+
 
 def run():
     st.set_page_config(
@@ -29,6 +28,7 @@ def run():
     st.write("# Welcome to Streamlit! 👋")
 
     st.sidebar.success("Select a demo above.")
+    st.chat_message("Ask anything about PI DT")
 
     st.markdown(
         """
