@@ -37,7 +37,7 @@ for message in st.session_state.messages:
 
 # Accept user input
 if prompt := st.chat_input("Ask anything about performance insights DT team or process?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    #st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
     query = prompt  # Use the user's input as the query
@@ -46,8 +46,7 @@ if prompt := st.chat_input("Ask anything about performance insights DT team or p
     chat_history.append((query, result['answer']))
 
     with st.chat_message("assistant"):
-        #st.write(st.session_state.messages)
         st.write(response)
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
-    st.session_state.history.append(query,response)
+    #st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append(query,response)
