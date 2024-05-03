@@ -44,7 +44,7 @@ if prompt := st.chat_input("Ask anything about performance insights DT team or p
     
     result = qa({"question":query,"chat_history":chat_history})
     response = result["answer"]
-
+    chat_history.append(f"User: {prompt}")
     # Print the response
     #print("Response:", response)
 
