@@ -27,6 +27,7 @@ qa = ConversationalRetrievalChain.from_llm(llm,retriever=db.as_retriever())
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    chat_history=[]
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
@@ -34,7 +35,6 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Accept user input
-chat_history=[]
 if prompt := st.chat_input("Ask anything about performance insights DT team or process?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
