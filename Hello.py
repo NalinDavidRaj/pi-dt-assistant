@@ -40,14 +40,10 @@ if prompt := st.chat_input("Ask anything about performance insights DT team or p
     with st.chat_message("user"):
         st.markdown(prompt)
     query = prompt  # Use the user's input as the query
-    #chat_history = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
-    
     result = qa({"question":query,"chat_history":chat_history})
     response = result["answer"]
-    chat_history.append(f"question: {prompt}")
-    # Print the response
-    #print("Response:", response)
-
+    chat_history.append((query, result['answer']))
+    
     with st.chat_message("assistant"):
         st.write(response)
 
