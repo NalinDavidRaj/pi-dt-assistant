@@ -15,8 +15,9 @@ import os
 import sys
 import getpass
  
-os.environ["COHERE_API_KEY"] ="7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw" #st.secrets["COHERE_API_KEY"] 
+os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]  #"7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw"
 #getpass.getpass()
+
  
 DB_FAISS_PATH = "vectorstore/db_faiss"
 # Read CSV files
@@ -49,7 +50,7 @@ existingindex = db.index.ntotal
 docsearch.merge_from(db)
 aftertraining =docsearch.index.ntotal
 #Save to Local path
-docsearch.save_local(DB_FAISS_PATH)
+#docsearch.save_local(DB_FAISS_PATH)
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
 print(f"Training completed Existing index : {existingindex} After Training : {aftertraining}")
 
