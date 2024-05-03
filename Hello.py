@@ -23,11 +23,11 @@ st.title("Performance Insights Assistant")
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
 llm = ChatCohere(model="command-r")
 qa = ConversationalRetrievalChain.from_llm(llm,retriever=db.as_retriever())
+chat_history=[]
 
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    chat_history=[]
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
