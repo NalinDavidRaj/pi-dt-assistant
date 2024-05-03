@@ -41,13 +41,18 @@ embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
  
 # convert the text chunks into embedding and save into FAISS knowledge base
 docsearch = FAISS.from_documents(text_chunks, embeddings)
+#print(docsearch.index.ntotal)
 #read existing index
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
+existingindex = db.index.ntotal
+#print(db.index.ntotal)
 docsearch.merge_from(db)
+aftertraining =docsearch.index.ntotal
 #Save to Local path
-docsearch.save_local(DB_FAISS_PATH)
+#docsearch.save_local(DB_FAISS_PATH)
+print(f"Training completed Existing index : {existingindex} After Training : {aftertraining}")
 
- 
+"""
 # calling llm model
 llm = ChatCohere(model="command-r")
 qa = ConversationalRetrievalChain.from_llm(llm, retriever=docsearch.as_retriever())
@@ -63,3 +68,4 @@ while True:
     print("processing")
     result = qa({"question": query, "chat_history": chat_history})
     print("Response:", result['answer'])
+"""
