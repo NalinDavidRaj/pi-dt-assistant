@@ -50,7 +50,7 @@ existingindex = db.index.ntotal
 docsearch.merge_from(db)
 aftertraining =docsearch.index.ntotal
 #Save to Local path
-#docsearch.save_local(DB_FAISS_PATH)
+docsearch.save_local(DB_FAISS_PATH)
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
 print(f"Training completed Existing index : {existingindex} After Training : {aftertraining}")
 
