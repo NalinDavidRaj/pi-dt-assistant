@@ -45,7 +45,7 @@ if prompt := st.chat_input("Ask anything about performance insights DT team or p
     chat_history.append((query, result['answer']))
 
     with st.chat_message("assistant"):
-        st.write(st.session_state.messages)
+        st.write(chat_history)
         #st.write(response)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
