@@ -15,7 +15,7 @@ import os
 import sys
 import getpass
  
-os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]  #"7Sc4f917kCqYSB3hyAYbsaCFLbFXZQUBucGKZjsw"
+os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"] 
 #getpass.getpass()
 
  
