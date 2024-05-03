@@ -44,20 +44,21 @@ docsearch = FAISS.from_documents(text_chunks, embeddings)
 #print(docsearch.index.ntotal)
 #read existing index
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
-#existingindex = db.index.ntotal
+existingindex = db.index.ntotal
 #print(db.index.ntotal)
 docsearch.merge_from(db)
-#aftertraining =docsearch.index.ntotal
+aftertraining =docsearch.index.ntotal
 #Save to Local path
 docsearch.save_local(DB_FAISS_PATH)
 db = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True) 
-#print(f"Training completed Existing index : {existingindex} After Training : {aftertraining}")
+print(f"Training completed Existing index : {existingindex} After Training : {aftertraining}")
 
-#debug
+""" #debug
 query = "who owns Mark@demomail.com?"
 results = db.similarity_search(query)
 for doc in results:
     print(f"Content: {doc.page_content}, Metadata: {doc.metadata}")
+"""
 
 """
 # calling llm model
