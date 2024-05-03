@@ -14,7 +14,7 @@ from langchain_cohere import CohereEmbeddings
 from streamlit.logger import get_logger
 
 
-COHERE_API_KEY =st.secrets["COHERE_API_KEY"]
+COHERE_API_KEY =st.sidebar.text_input('COHERE API Key', type='password') #st.secrets["COHERE_API_KEY"]
 DB_FAISS_PATH = r"vectorstore/db_faiss"
 embeddings = CohereEmbeddings(model="embed-english-light-v3.0")
 
